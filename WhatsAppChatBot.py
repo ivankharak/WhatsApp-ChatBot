@@ -65,7 +65,7 @@ while True:                         #Until the value is true/Forever
                     send("We are already talking, ain't we?")
  
             if "how are you" in cb:
-                send("Well!")
+                send("I'm fine!")
                 counter2 += 1
                 if (counter2 % 2 != 0):
                     send("I am fine, thank you.")
@@ -115,22 +115,22 @@ while True:                         #Until the value is true/Forever
                     send("Lol, you have already asked this question %s times"%(counter5-1))
  
             if "news" in cb:
-                send("Please wait while I fetch fresh news.")
+                send("Please wait a second while I fetch fresh news.")
                 news_url = "https://news.google.com/news/rss"
                 Client = urlopen(news_url)
                 xml_page = Client.read()
                 Client.close()
                 soup_page = BeautifulSoup(xml_page, "html.parser")
                 news_list = soup_page.findAll("item")
-                send("Here are top 3 news")
-                for news in news_list[:3]:
+                send("Here are top 5 news")
+                for news in news_list[:5]:
                     send(news.title.text)
  
             if "tell me about" in cb:
                 topic = re.search("tell me about (.+)", cb).group(1)
                 send("Please wait while i gather information about %s"%topic)
-                summry = wk.summary(topic, sentences = 2)
-                send(summry)
+                summray = wk.summary(topic, sentences = 2)
+                send(summray)
  
             if "you speak" in cb:
                 p.click(1210,682)
