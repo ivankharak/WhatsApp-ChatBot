@@ -122,15 +122,15 @@ while True:                         #Until the value is true/Forever
                 Client.close()
                 soup_page = BeautifulSoup(xml_page, "html.parser")
                 news_list = soup_page.findAll("item")
-                send("Here are top 3 news")
-                for news in news_list[:3]:
+                send("Here are top 5 news")
+                for news in news_list[:5]:
                     send(news.title.text)
  
             if "tell me about" in cb:
                 topic = re.search("tell me about (.+)", cb).group(1)
                 send("Please wait while i gather information about %s"%topic)
-                summry = wk.summary(topic, sentences = 2)
-                send(summry)
+                summray = wk.summary(topic, sentences = 2)
+                send(summray)
  
             if "you speak" in cb:
                 p.click(1210,682)
